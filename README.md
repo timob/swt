@@ -1,15 +1,11 @@
-SWT
-===
+# SWT
 Go bindings for Eclipse SWT widget toolkit library. https://www.eclipse.org/swt/
 
 The binding uses JNI to use SWT. The classpath of the JVM must be setup to include your local SWT install (swt.jar) and the native
 classes used by this binding (classpath directory in the source). This can be done with javabind.SetupJVM().
 
-####Todo
-* Test on OSX/Windows more.
-* Add Javadoc to source
-
-####Thread model
+## Notes
+### Thread model
 SWT requires that functions that modify the UI must be run on the UI thread. In this binding when javabind.SetupJVM is called 
 the Go routine is locked to the thread. Call swt.NewWidgetsDisplay() from this Go routine and run the event loop here. The util package
 can be used to run functions from other Go routines on the UI Go routine. Place ExecUiFuncs() just before display.Sleep() in the 
@@ -17,10 +13,8 @@ event loop, so functions from other Go routines execute here.
 
 Note listener callback functions always run on the UI Go routine, so the util package is not needed for these.
 
-####Example
-Shows adding controls to a window, tab control, tree and setting up a button selection listener. (from examples dir)
-
-![alt widgets](/doc/widgets.png)
+## Example
+Demonstrates adding controls to a window, tab control, tree and setting up a button selection listener. (from examples dir)
 
 ```` go
 package main
