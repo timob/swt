@@ -5,17 +5,26 @@ import "github.com/timob/javabind"
 type GraphicsImageDataInterface interface {
 	JavaLangObjectInterface
 
+	// public static org.eclipse.swt.graphics.ImageData internal_new(int, int, int, org.eclipse.swt.graphics.PaletteData, int, byte[], int, byte[], byte[], int, int, int, int, int, int, int)
+	Internal_new(a int, b int, c int, d GraphicsPaletteDataInterface, e int, f []byte, g int, h []byte, i []byte, j int, k int, l int, m int, n int, o int, p int) *GraphicsImageData
+
 	// public java.lang.Object clone()
 	Clone() *JavaLangObject
 
 	// public int getAlpha(int, int)
 	GetAlpha(a int, b int) int
 
+	// public void getAlphas(int, int, int, byte[], int)
+	GetAlphas(a int, b int, c int, d []byte, e int) 
+
 	// public int getPixel(int, int)
 	GetPixel(a int, b int) int
 
+	// public void getPixels(int, int, int, byte[], int)
+	GetPixels(a int, b int, c int, d []byte, e int) 
+
 	// public void getPixels(int, int, int, int[], int)
-	GetPixels(a int, b int, c int, d []int, e int) 
+	GetPixels2(a int, b int, c int, d []int, e int) 
 
 	// public org.eclipse.swt.graphics.RGB[] getRGBs()
 	GetRGBs() []*GraphicsRGB
@@ -32,11 +41,17 @@ type GraphicsImageDataInterface interface {
 	// public void setAlpha(int, int, int)
 	SetAlpha(a int, b int, c int) 
 
+	// public void setAlphas(int, int, int, byte[], int)
+	SetAlphas(a int, b int, c int, d []byte, e int) 
+
 	// public void setPixel(int, int, int)
 	SetPixel(a int, b int, c int) 
 
+	// public void setPixels(int, int, int, byte[], int)
+	SetPixels(a int, b int, c int, d []byte, e int) 
+
 	// public void setPixels(int, int, int, int[], int)
-	SetPixels(a int, b int, c int, d []int, e int) 
+	SetPixels2(a int, b int, c int, d []int, e int) 
 }
 
 type GraphicsImageData struct {
@@ -51,6 +66,23 @@ func NewGraphicsImageData2(a int, b int, c int, d GraphicsPaletteDataInterface) 
 	}
 
 	obj, err := javabind.GetEnv().NewObject("org/eclipse/swt/graphics/ImageData", a, b, c, conv_d.Value().Cast("org/eclipse/swt/graphics/PaletteData"))
+	if err != nil {
+		panic(err)
+	}
+	conv_d.CleanUp()
+	x := &GraphicsImageData{}
+	x.Callable = &javabind.Callable{obj}
+	return x
+}
+
+// public org.eclipse.swt.graphics.ImageData(int, int, int, org.eclipse.swt.graphics.PaletteData, int, byte[])
+func NewGraphicsImageData3(a int, b int, c int, d GraphicsPaletteDataInterface, e int, f []byte) (*GraphicsImageData) {
+	conv_d := javabind.NewGoToJavaCallable()
+	if err := conv_d.Convert(d); err != nil {
+		panic(err)
+	}
+
+	obj, err := javabind.GetEnv().NewObject("org/eclipse/swt/graphics/ImageData", a, b, c, conv_d.Value().Cast("org/eclipse/swt/graphics/PaletteData"), e, f)
 	if err != nil {
 		panic(err)
 	}
@@ -75,6 +107,29 @@ func NewGraphicsImageData(a string) (*GraphicsImageData) {
 	x := &GraphicsImageData{}
 	x.Callable = &javabind.Callable{obj}
 	return x
+}
+
+// public static org.eclipse.swt.graphics.ImageData internal_new(int, int, int, org.eclipse.swt.graphics.PaletteData, int, byte[], int, byte[], byte[], int, int, int, int, int, int, int)
+func (jbobject *GraphicsImageData) Internal_new(a int, b int, c int, d GraphicsPaletteDataInterface, e int, f []byte, g int, h []byte, i []byte, j int, k int, l int, m int, n int, o int, p int) *GraphicsImageData {
+	conv_d := javabind.NewGoToJavaCallable()
+	if err := conv_d.Convert(d); err != nil {
+		panic(err)
+	}
+	jret, err := javabind.GetEnv().CallStaticMethod("org/eclipse/swt/graphics/ImageData", "internal_new", "org/eclipse/swt/graphics/ImageData", a, b, c, conv_d.Value().Cast("org/eclipse/swt/graphics/PaletteData"), e, f, g, h, i, j, k, l, m, n, o, p)
+	if err != nil {
+		panic(err)
+	}
+	conv_d.CleanUp()
+	retconv := javabind.NewJavaToGoCallable()
+	dst := &javabind.Callable{}
+	retconv.Dest(dst)
+	if err := retconv.Convert(javabind.ObjectRef(jret)); err != nil {
+		panic(err)
+	}
+	retconv.CleanUp()
+	unique_x := &GraphicsImageData{}
+	unique_x.Callable = dst
+	return unique_x
 }
 
 // public java.lang.Object clone()
@@ -104,6 +159,15 @@ func (jbobject *GraphicsImageData) GetAlpha(a int, b int) int {
 	return jret.(int)
 }
 
+// public void getAlphas(int, int, int, byte[], int)
+func (jbobject *GraphicsImageData) GetAlphas(a int, b int, c int, d []byte, e int)  {
+	_, err := jbobject.CallMethod(javabind.GetEnv(), "getAlphas", javabind.Void, a, b, c, d, e)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
 // public int getPixel(int, int)
 func (jbobject *GraphicsImageData) GetPixel(a int, b int) int {
 	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getPixel", javabind.Int, a, b)
@@ -113,8 +177,17 @@ func (jbobject *GraphicsImageData) GetPixel(a int, b int) int {
 	return jret.(int)
 }
 
+// public void getPixels(int, int, int, byte[], int)
+func (jbobject *GraphicsImageData) GetPixels(a int, b int, c int, d []byte, e int)  {
+	_, err := jbobject.CallMethod(javabind.GetEnv(), "getPixels", javabind.Void, a, b, c, d, e)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
 // public void getPixels(int, int, int, int[], int)
-func (jbobject *GraphicsImageData) GetPixels(a int, b int, c int, d []int, e int)  {
+func (jbobject *GraphicsImageData) GetPixels2(a int, b int, c int, d []int, e int)  {
 	_, err := jbobject.CallMethod(javabind.GetEnv(), "getPixels", javabind.Void, a, b, c, d, e)
 	if err != nil {
 		panic(err)
@@ -192,6 +265,15 @@ func (jbobject *GraphicsImageData) SetAlpha(a int, b int, c int)  {
 
 }
 
+// public void setAlphas(int, int, int, byte[], int)
+func (jbobject *GraphicsImageData) SetAlphas(a int, b int, c int, d []byte, e int)  {
+	_, err := jbobject.CallMethod(javabind.GetEnv(), "setAlphas", javabind.Void, a, b, c, d, e)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
 // public void setPixel(int, int, int)
 func (jbobject *GraphicsImageData) SetPixel(a int, b int, c int)  {
 	_, err := jbobject.CallMethod(javabind.GetEnv(), "setPixel", javabind.Void, a, b, c)
@@ -201,8 +283,17 @@ func (jbobject *GraphicsImageData) SetPixel(a int, b int, c int)  {
 
 }
 
+// public void setPixels(int, int, int, byte[], int)
+func (jbobject *GraphicsImageData) SetPixels(a int, b int, c int, d []byte, e int)  {
+	_, err := jbobject.CallMethod(javabind.GetEnv(), "setPixels", javabind.Void, a, b, c, d, e)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
 // public void setPixels(int, int, int, int[], int)
-func (jbobject *GraphicsImageData) SetPixels(a int, b int, c int, d []int, e int)  {
+func (jbobject *GraphicsImageData) SetPixels2(a int, b int, c int, d []int, e int)  {
 	_, err := jbobject.CallMethod(javabind.GetEnv(), "setPixels", javabind.Void, a, b, c, d, e)
 	if err != nil {
 		panic(err)
@@ -290,6 +381,22 @@ func (jbobject *GraphicsImageData) SetFieldBytesPerLine(val int) {
 
 }
 
+func (jbobject *GraphicsImageData) Data() []byte {
+	jret, err := jbobject.GetField(javabind.GetEnv(), "data", javabind.Byte | javabind.Array)
+	if err != nil {
+		panic(err)
+	}
+	return jret.([]byte)
+}
+
+func (jbobject *GraphicsImageData) SetFieldData(val []byte) {
+	err := jbobject.SetField(javabind.GetEnv(), "data", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
 func (jbobject *GraphicsImageData) Palette() *GraphicsPaletteData {
 	jret, err := jbobject.GetField(javabind.GetEnv(), "palette", "org/eclipse/swt/graphics/PaletteData")
 	if err != nil {
@@ -336,6 +443,22 @@ func (jbobject *GraphicsImageData) SetFieldTransparentPixel(val int) {
 
 }
 
+func (jbobject *GraphicsImageData) MaskData() []byte {
+	jret, err := jbobject.GetField(javabind.GetEnv(), "maskData", javabind.Byte | javabind.Array)
+	if err != nil {
+		panic(err)
+	}
+	return jret.([]byte)
+}
+
+func (jbobject *GraphicsImageData) SetFieldMaskData(val []byte) {
+	err := jbobject.SetField(javabind.GetEnv(), "maskData", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
 func (jbobject *GraphicsImageData) MaskPad() int {
 	jret, err := jbobject.GetField(javabind.GetEnv(), "maskPad", javabind.Int)
 	if err != nil {
@@ -346,6 +469,22 @@ func (jbobject *GraphicsImageData) MaskPad() int {
 
 func (jbobject *GraphicsImageData) SetFieldMaskPad(val int) {
 	err := jbobject.SetField(javabind.GetEnv(), "maskPad", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
+func (jbobject *GraphicsImageData) AlphaData() []byte {
+	jret, err := jbobject.GetField(javabind.GetEnv(), "alphaData", javabind.Byte | javabind.Array)
+	if err != nil {
+		panic(err)
+	}
+	return jret.([]byte)
+}
+
+func (jbobject *GraphicsImageData) SetFieldAlphaData(val []byte) {
+	err := jbobject.SetField(javabind.GetEnv(), "alphaData", val)
 	if err != nil {
 		panic(err)
 	}

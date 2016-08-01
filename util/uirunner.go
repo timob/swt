@@ -16,19 +16,27 @@ type UIRunner struct {
 	jniThread  *javabind.AttachedThread
 	display    *swt.WidgetsDisplay
 	awake		bool
+	check		*javabind.CheckEnv
 }
 
 func NewUIRunner(d *swt.WidgetsDisplay) *UIRunner {
-	return &UIRunner{make(chan func(), 10), make(chan byte), make(chan func(), 1000), javabind.NewAttachedThread(), d, false}
+	return &UIRunner{make(chan func(), 10), make(chan byte), make(chan func(), 1000), javabind.NewAttachedThread(), d, false, nil}
 }
 
 func (u *UIRunner) Run(f func()) {
-	u.uiFuncChan <- f
-	u.jniThread.Run(u.display.Wake)
-	<-u.uiDone
+	if u.check != nil && u.check.SameEnv() {
+		f()
+	} else {
+		u.uiFuncChan <- f
+		u.jniThread.Run(u.display.Wake)
+		<-u.uiDone
+	}
 }
 
 func (u *UIRunner) ExecUiFuncs() {
+	if u.check == nil {
+		u.check = javabind.NewCheckEnv()
+	}
 	select {
 	case f := <-u.uiFuncChan:
 		f()

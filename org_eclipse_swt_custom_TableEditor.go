@@ -18,7 +18,7 @@ type CustomTableEditorInterface interface {
 	SetItem(a WidgetsTableItemInterface) 
 
 	// public void setEditor(org.eclipse.swt.widgets.Control, org.eclipse.swt.widgets.TableItem, int)
-	SetEditor3(a WidgetsControlInterface, b WidgetsTableItemInterface, c int) 
+	SetEditor2(a WidgetsControlInterface, b WidgetsTableItemInterface, c int) 
 }
 
 type CustomTableEditor struct {
@@ -102,7 +102,7 @@ func (jbobject *CustomTableEditor) SetItem(a WidgetsTableItemInterface)  {
 }
 
 // public void setEditor(org.eclipse.swt.widgets.Control)
-func (jbobject *CustomTableEditor) SetEditor2(a WidgetsControlInterface)  {
+func (jbobject *CustomTableEditor) SetEditor(a WidgetsControlInterface)  {
 	conv_a := javabind.NewGoToJavaCallable()
 	if err := conv_a.Convert(a); err != nil {
 		panic(err)
@@ -116,7 +116,7 @@ func (jbobject *CustomTableEditor) SetEditor2(a WidgetsControlInterface)  {
 }
 
 // public void setEditor(org.eclipse.swt.widgets.Control, org.eclipse.swt.widgets.TableItem, int)
-func (jbobject *CustomTableEditor) SetEditor3(a WidgetsControlInterface, b WidgetsTableItemInterface, c int)  {
+func (jbobject *CustomTableEditor) SetEditor2(a WidgetsControlInterface, b WidgetsTableItemInterface, c int)  {
 	conv_a := javabind.NewGoToJavaCallable()
 	conv_b := javabind.NewGoToJavaCallable()
 	if err := conv_a.Convert(a); err != nil {

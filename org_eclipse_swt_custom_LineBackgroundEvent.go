@@ -10,6 +10,23 @@ type CustomLineBackgroundEvent struct {
 	EventsTypedEvent
 }
 
+// public org.eclipse.swt.custom.LineBackgroundEvent(org.eclipse.swt.custom.StyledTextEvent)
+func NewCustomLineBackgroundEvent(a CustomStyledTextEventInterface) (*CustomLineBackgroundEvent) {
+	conv_a := javabind.NewGoToJavaCallable()
+	if err := conv_a.Convert(a); err != nil {
+		panic(err)
+	}
+
+	obj, err := javabind.GetEnv().NewObject("org/eclipse/swt/custom/LineBackgroundEvent", conv_a.Value().Cast("org/eclipse/swt/custom/StyledTextEvent"))
+	if err != nil {
+		panic(err)
+	}
+	conv_a.CleanUp()
+	x := &CustomLineBackgroundEvent{}
+	x.Callable = &javabind.Callable{obj}
+	return x
+}
+
 func (jbobject *CustomLineBackgroundEvent) LineOffset() int {
 	jret, err := jbobject.GetField(javabind.GetEnv(), "lineOffset", javabind.Int)
 	if err != nil {

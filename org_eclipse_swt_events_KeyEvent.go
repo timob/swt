@@ -43,6 +43,22 @@ func (jbobject *EventsKeyEvent) ToString() string {
 	return *dst
 }
 
+func (jbobject *EventsKeyEvent) Character() uint16 {
+	jret, err := jbobject.GetField(javabind.GetEnv(), "character", javabind.Char)
+	if err != nil {
+		panic(err)
+	}
+	return jret.(uint16)
+}
+
+func (jbobject *EventsKeyEvent) SetFieldCharacter(val uint16) {
+	err := jbobject.SetField(javabind.GetEnv(), "character", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
 func (jbobject *EventsKeyEvent) KeyCode() int {
 	jret, err := jbobject.GetField(javabind.GetEnv(), "keyCode", javabind.Int)
 	if err != nil {

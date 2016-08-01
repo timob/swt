@@ -22,6 +22,22 @@ func NewGraphicsPathData() (*GraphicsPathData) {
 	return x
 }
 
+func (jbobject *GraphicsPathData) Types() []byte {
+	jret, err := jbobject.GetField(javabind.GetEnv(), "types", javabind.Byte | javabind.Array)
+	if err != nil {
+		panic(err)
+	}
+	return jret.([]byte)
+}
+
+func (jbobject *GraphicsPathData) SetFieldTypes(val []byte) {
+	err := jbobject.SetField(javabind.GetEnv(), "types", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
 func (jbobject *GraphicsPathData) Points() []float32 {
 	jret, err := jbobject.GetField(javabind.GetEnv(), "points", javabind.Float | javabind.Array)
 	if err != nil {

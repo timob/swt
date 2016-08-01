@@ -80,6 +80,9 @@ type GraphicsTextLayoutInterface interface {
 	// public int[] getSegments()
 	GetSegments() []int
 
+	// public char[] getSegmentsChars()
+	GetSegmentsChars() []uint16
+
 	// public int getSpacing()
 	GetSpacing() int
 
@@ -127,6 +130,9 @@ type GraphicsTextLayoutInterface interface {
 
 	// public void setSegments(int[])
 	SetSegments(a []int) 
+
+	// public void setSegmentsChars(char[])
+	SetSegmentsChars(a []uint16) 
 
 	// public void setStyle(org.eclipse.swt.graphics.TextStyle, int, int)
 	SetStyle(a GraphicsTextStyleInterface, b int, c int) 
@@ -484,6 +490,15 @@ func (jbobject *GraphicsTextLayout) GetSegments() []int {
 	return jret.([]int)
 }
 
+// public char[] getSegmentsChars()
+func (jbobject *GraphicsTextLayout) GetSegmentsChars() []uint16 {
+	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getSegmentsChars", javabind.Char | javabind.Array)
+	if err != nil {
+		panic(err)
+	}
+	return jret.([]uint16)
+}
+
 // public int getSpacing()
 func (jbobject *GraphicsTextLayout) GetSpacing() int {
 	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getSpacing", javabind.Int)
@@ -659,6 +674,15 @@ func (jbobject *GraphicsTextLayout) SetSpacing(a int)  {
 // public void setSegments(int[])
 func (jbobject *GraphicsTextLayout) SetSegments(a []int)  {
 	_, err := jbobject.CallMethod(javabind.GetEnv(), "setSegments", javabind.Void, a)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
+// public void setSegmentsChars(char[])
+func (jbobject *GraphicsTextLayout) SetSegmentsChars(a []uint16)  {
+	_, err := jbobject.CallMethod(javabind.GetEnv(), "setSegmentsChars", javabind.Void, a)
 	if err != nil {
 		panic(err)
 	}

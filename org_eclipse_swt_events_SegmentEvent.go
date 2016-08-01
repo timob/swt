@@ -87,4 +87,20 @@ func (jbobject *EventsSegmentEvent) SetFieldSegments(val []int) {
 
 }
 
+func (jbobject *EventsSegmentEvent) SegmentsChars() []uint16 {
+	jret, err := jbobject.GetField(javabind.GetEnv(), "segmentsChars", javabind.Char | javabind.Array)
+	if err != nil {
+		panic(err)
+	}
+	return jret.([]uint16)
+}
+
+func (jbobject *EventsSegmentEvent) SetFieldSegmentsChars(val []uint16) {
+	err := jbobject.SetField(javabind.GetEnv(), "segmentsChars", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
 

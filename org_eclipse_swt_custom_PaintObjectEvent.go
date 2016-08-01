@@ -10,6 +10,23 @@ type CustomPaintObjectEvent struct {
 	EventsTypedEvent
 }
 
+// public org.eclipse.swt.custom.PaintObjectEvent(org.eclipse.swt.custom.StyledTextEvent)
+func NewCustomPaintObjectEvent(a CustomStyledTextEventInterface) (*CustomPaintObjectEvent) {
+	conv_a := javabind.NewGoToJavaCallable()
+	if err := conv_a.Convert(a); err != nil {
+		panic(err)
+	}
+
+	obj, err := javabind.GetEnv().NewObject("org/eclipse/swt/custom/PaintObjectEvent", conv_a.Value().Cast("org/eclipse/swt/custom/StyledTextEvent"))
+	if err != nil {
+		panic(err)
+	}
+	conv_a.CleanUp()
+	x := &CustomPaintObjectEvent{}
+	x.Callable = &javabind.Callable{obj}
+	return x
+}
+
 func (jbobject *CustomPaintObjectEvent) Gc() *GraphicsGC {
 	jret, err := jbobject.GetField(javabind.GetEnv(), "gc", "org/eclipse/swt/graphics/GC")
 	if err != nil {

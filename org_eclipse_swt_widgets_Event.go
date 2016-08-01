@@ -356,6 +356,22 @@ func (jbobject *WidgetsEvent) SetFieldButton(val int) {
 
 }
 
+func (jbobject *WidgetsEvent) Character() uint16 {
+	jret, err := jbobject.GetField(javabind.GetEnv(), "character", javabind.Char)
+	if err != nil {
+		panic(err)
+	}
+	return jret.(uint16)
+}
+
+func (jbobject *WidgetsEvent) SetFieldCharacter(val uint16) {
+	err := jbobject.SetField(javabind.GetEnv(), "character", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
 func (jbobject *WidgetsEvent) KeyCode() int {
 	jret, err := jbobject.GetField(javabind.GetEnv(), "keyCode", javabind.Int)
 	if err != nil {
@@ -474,6 +490,22 @@ func (jbobject *WidgetsEvent) Segments() []int {
 
 func (jbobject *WidgetsEvent) SetFieldSegments(val []int) {
 	err := jbobject.SetField(javabind.GetEnv(), "segments", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
+func (jbobject *WidgetsEvent) SegmentsChars() []uint16 {
+	jret, err := jbobject.GetField(javabind.GetEnv(), "segmentsChars", javabind.Char | javabind.Array)
+	if err != nil {
+		panic(err)
+	}
+	return jret.([]uint16)
+}
+
+func (jbobject *WidgetsEvent) SetFieldSegmentsChars(val []uint16) {
+	err := jbobject.SetField(javabind.GetEnv(), "segmentsChars", val)
 	if err != nil {
 		panic(err)
 	}

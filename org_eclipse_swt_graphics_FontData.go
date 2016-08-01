@@ -275,4 +275,20 @@ func (jbobject *GraphicsFontData) SetFieldStyle(val int) {
 
 }
 
+func (jbobject *GraphicsFontData) String() []byte {
+	jret, err := jbobject.GetField(javabind.GetEnv(), "string", javabind.Byte | javabind.Array)
+	if err != nil {
+		panic(err)
+	}
+	return jret.([]byte)
+}
+
+func (jbobject *GraphicsFontData) SetFieldString(val []byte) {
+	err := jbobject.SetField(javabind.GetEnv(), "string", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
 

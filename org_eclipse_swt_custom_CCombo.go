@@ -842,7 +842,7 @@ func (jbobject *CustomCCombo) SetVisibleItemCount(a int)  {
 }
 
 // public boolean traverse(int)
-func (jbobject *CustomCCombo) Traverse4(a int) bool {
+func (jbobject *CustomCCombo) Traverse(a int) bool {
 	jret, err := jbobject.CallMethod(javabind.GetEnv(), "traverse", javabind.Boolean, a)
 	if err != nil {
 		panic(err)

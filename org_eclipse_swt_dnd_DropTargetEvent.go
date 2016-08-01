@@ -10,6 +10,23 @@ type DndDropTargetEvent struct {
 	EventsTypedEvent
 }
 
+// public org.eclipse.swt.dnd.DropTargetEvent(org.eclipse.swt.dnd.DNDEvent)
+func NewDndDropTargetEvent(a DndDNDEventInterface) (*DndDropTargetEvent) {
+	conv_a := javabind.NewGoToJavaCallable()
+	if err := conv_a.Convert(a); err != nil {
+		panic(err)
+	}
+
+	obj, err := javabind.GetEnv().NewObject("org/eclipse/swt/dnd/DropTargetEvent", conv_a.Value().Cast("org/eclipse/swt/dnd/DNDEvent"))
+	if err != nil {
+		panic(err)
+	}
+	conv_a.CleanUp()
+	x := &DndDropTargetEvent{}
+	x.Callable = &javabind.Callable{obj}
+	return x
+}
+
 // public java.lang.String toString()
 func (jbobject *DndDropTargetEvent) ToString() string {
 	jret, err := jbobject.CallMethod(javabind.GetEnv(), "toString", "java/lang/String")

@@ -3122,6 +3122,118 @@ func (jbobject *SWT) SetFieldROMAN(val int) {
 
 }
 
+func (jbobject *SWT) BS() uint16 {
+	jret, err := javabind.GetEnv().GetStaticField("org/eclipse/swt/SWT", "BS", javabind.Char)
+	if err != nil {
+		panic(err)
+	}
+	return jret.(uint16)
+}
+
+func (jbobject *SWT) SetFieldBS(val uint16) {
+	err := javabind.GetEnv().SetStaticField("org/eclipse/swt/SWT", "BS", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
+func (jbobject *SWT) CR() uint16 {
+	jret, err := javabind.GetEnv().GetStaticField("org/eclipse/swt/SWT", "CR", javabind.Char)
+	if err != nil {
+		panic(err)
+	}
+	return jret.(uint16)
+}
+
+func (jbobject *SWT) SetFieldCR(val uint16) {
+	err := javabind.GetEnv().SetStaticField("org/eclipse/swt/SWT", "CR", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
+func (jbobject *SWT) DEL() uint16 {
+	jret, err := javabind.GetEnv().GetStaticField("org/eclipse/swt/SWT", "DEL", javabind.Char)
+	if err != nil {
+		panic(err)
+	}
+	return jret.(uint16)
+}
+
+func (jbobject *SWT) SetFieldDEL(val uint16) {
+	err := javabind.GetEnv().SetStaticField("org/eclipse/swt/SWT", "DEL", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
+func (jbobject *SWT) ESC() uint16 {
+	jret, err := javabind.GetEnv().GetStaticField("org/eclipse/swt/SWT", "ESC", javabind.Char)
+	if err != nil {
+		panic(err)
+	}
+	return jret.(uint16)
+}
+
+func (jbobject *SWT) SetFieldESC(val uint16) {
+	err := javabind.GetEnv().SetStaticField("org/eclipse/swt/SWT", "ESC", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
+func (jbobject *SWT) LF() uint16 {
+	jret, err := javabind.GetEnv().GetStaticField("org/eclipse/swt/SWT", "LF", javabind.Char)
+	if err != nil {
+		panic(err)
+	}
+	return jret.(uint16)
+}
+
+func (jbobject *SWT) SetFieldLF(val uint16) {
+	err := javabind.GetEnv().SetStaticField("org/eclipse/swt/SWT", "LF", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
+func (jbobject *SWT) TAB() uint16 {
+	jret, err := javabind.GetEnv().GetStaticField("org/eclipse/swt/SWT", "TAB", javabind.Char)
+	if err != nil {
+		panic(err)
+	}
+	return jret.(uint16)
+}
+
+func (jbobject *SWT) SetFieldTAB(val uint16) {
+	err := javabind.GetEnv().SetStaticField("org/eclipse/swt/SWT", "TAB", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
+func (jbobject *SWT) SPACE() uint16 {
+	jret, err := javabind.GetEnv().GetStaticField("org/eclipse/swt/SWT", "SPACE", javabind.Char)
+	if err != nil {
+		panic(err)
+	}
+	return jret.(uint16)
+}
+
+func (jbobject *SWT) SetFieldSPACE(val uint16) {
+	err := javabind.GetEnv().SetStaticField("org/eclipse/swt/SWT", "SPACE", val)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
 func (jbobject *SWT) ALT() int {
 	jret, err := javabind.GetEnv().GetStaticField("org/eclipse/swt/SWT", "ALT", javabind.Int)
 	if err != nil {

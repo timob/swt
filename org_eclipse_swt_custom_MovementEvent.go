@@ -10,6 +10,23 @@ type CustomMovementEvent struct {
 	EventsTypedEvent
 }
 
+// public org.eclipse.swt.custom.MovementEvent(org.eclipse.swt.custom.StyledTextEvent)
+func NewCustomMovementEvent(a CustomStyledTextEventInterface) (*CustomMovementEvent) {
+	conv_a := javabind.NewGoToJavaCallable()
+	if err := conv_a.Convert(a); err != nil {
+		panic(err)
+	}
+
+	obj, err := javabind.GetEnv().NewObject("org/eclipse/swt/custom/MovementEvent", conv_a.Value().Cast("org/eclipse/swt/custom/StyledTextEvent"))
+	if err != nil {
+		panic(err)
+	}
+	conv_a.CleanUp()
+	x := &CustomMovementEvent{}
+	x.Callable = &javabind.Callable{obj}
+	return x
+}
+
 func (jbobject *CustomMovementEvent) LineOffset() int {
 	jret, err := jbobject.GetField(javabind.GetEnv(), "lineOffset", javabind.Int)
 	if err != nil {

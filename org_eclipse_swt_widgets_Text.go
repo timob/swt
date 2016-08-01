@@ -44,6 +44,9 @@ type WidgetsTextInterface interface {
 	// public boolean getDoubleClickEnabled()
 	GetDoubleClickEnabled() bool
 
+	// public char getEchoChar()
+	GetEchoChar() uint16
+
 	// public boolean getEditable()
 	GetEditable() bool
 
@@ -76,6 +79,9 @@ type WidgetsTextInterface interface {
 
 	// public java.lang.String getText(int, int)
 	GetText2(a int, b int) string
+
+	// public char[] getTextChars()
+	GetTextChars() []uint16
 
 	// public int getTextLimit()
 	GetTextLimit() int
@@ -110,6 +116,9 @@ type WidgetsTextInterface interface {
 	// public void setDoubleClickEnabled(boolean)
 	SetDoubleClickEnabled(a bool) 
 
+	// public void setEchoChar(char)
+	SetEchoChar(a uint16) 
+
 	// public void setEditable(boolean)
 	SetEditable(a bool) 
 
@@ -130,6 +139,9 @@ type WidgetsTextInterface interface {
 
 	// public void setText(java.lang.String)
 	SetText(a string) 
+
+	// public void setTextChars(char[])
+	SetTextChars(a []uint16) 
 
 	// public void setTextLimit(int)
 	SetTextLimit(a int) 
@@ -358,6 +370,15 @@ func (jbobject *WidgetsText) GetDoubleClickEnabled() bool {
 	return jret.(bool)
 }
 
+// public char getEchoChar()
+func (jbobject *WidgetsText) GetEchoChar() uint16 {
+	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getEchoChar", javabind.Char)
+	if err != nil {
+		panic(err)
+	}
+	return jret.(uint16)
+}
+
 // public boolean getEditable()
 func (jbobject *WidgetsText) GetEditable() bool {
 	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getEditable", javabind.Boolean)
@@ -510,6 +531,15 @@ func (jbobject *WidgetsText) GetText2(a int, b int) string {
 	return *dst
 }
 
+// public char[] getTextChars()
+func (jbobject *WidgetsText) GetTextChars() []uint16 {
+	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getTextChars", javabind.Char | javabind.Array)
+	if err != nil {
+		panic(err)
+	}
+	return jret.([]uint16)
+}
+
 // public int getTextLimit()
 func (jbobject *WidgetsText) GetTextLimit() int {
 	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getTextLimit", javabind.Int)
@@ -634,6 +664,15 @@ func (jbobject *WidgetsText) SetDoubleClickEnabled(a bool)  {
 
 }
 
+// public void setEchoChar(char)
+func (jbobject *WidgetsText) SetEchoChar(a uint16)  {
+	_, err := jbobject.CallMethod(javabind.GetEnv(), "setEchoChar", javabind.Void, a)
+	if err != nil {
+		panic(err)
+	}
+
+}
+
 // public void setEditable(boolean)
 func (jbobject *WidgetsText) SetEditable(a bool)  {
 	_, err := jbobject.CallMethod(javabind.GetEnv(), "setEditable", javabind.Void, a)
@@ -718,6 +757,15 @@ func (jbobject *WidgetsText) SetText(a string)  {
 		panic(err)
 	}
 	conv_a.CleanUp()
+
+}
+
+// public void setTextChars(char[])
+func (jbobject *WidgetsText) SetTextChars(a []uint16)  {
+	_, err := jbobject.CallMethod(javabind.GetEnv(), "setTextChars", javabind.Void, a)
+	if err != nil {
+		panic(err)
+	}
 
 }
 

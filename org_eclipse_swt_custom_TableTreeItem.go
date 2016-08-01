@@ -27,7 +27,7 @@ type CustomTableTreeItemInterface interface {
 	GetForeground() *GraphicsColor
 
 	// public org.eclipse.swt.graphics.Image getImage(int)
-	GetImage3(a int) *GraphicsImage
+	GetImage2(a int) *GraphicsImage
 
 	// public org.eclipse.swt.custom.TableTreeItem getItem(int)
 	GetItem(a int) *CustomTableTreeItem
@@ -45,7 +45,7 @@ type CustomTableTreeItemInterface interface {
 	GetParentItem() *CustomTableTreeItem
 
 	// public java.lang.String getText(int)
-	GetText3(a int) string
+	GetText2(a int) string
 
 	// public int indexOf(org.eclipse.swt.custom.TableTreeItem)
 	IndexOf(a CustomTableTreeItemInterface) int
@@ -69,10 +69,10 @@ type CustomTableTreeItemInterface interface {
 	SetForeground(a GraphicsColorInterface) 
 
 	// public void setImage(int, org.eclipse.swt.graphics.Image)
-	SetImage3(a int, b GraphicsImageInterface) 
+	SetImage2(a int, b GraphicsImageInterface) 
 
 	// public void setText(int, java.lang.String)
-	SetText3(a int, b string) 
+	SetText2(a int, b string) 
 }
 
 type CustomTableTreeItem struct {
@@ -247,7 +247,7 @@ func (jbobject *CustomTableTreeItem) GetForeground() *GraphicsColor {
 }
 
 // public org.eclipse.swt.graphics.Image getImage()
-func (jbobject *CustomTableTreeItem) GetImage2() *GraphicsImage {
+func (jbobject *CustomTableTreeItem) GetImage() *GraphicsImage {
 	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getImage", "org/eclipse/swt/graphics/Image")
 	if err != nil {
 		panic(err)
@@ -265,7 +265,7 @@ func (jbobject *CustomTableTreeItem) GetImage2() *GraphicsImage {
 }
 
 // public org.eclipse.swt.graphics.Image getImage(int)
-func (jbobject *CustomTableTreeItem) GetImage3(a int) *GraphicsImage {
+func (jbobject *CustomTableTreeItem) GetImage2(a int) *GraphicsImage {
 	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getImage", "org/eclipse/swt/graphics/Image", a)
 	if err != nil {
 		panic(err)
@@ -362,7 +362,7 @@ func (jbobject *CustomTableTreeItem) GetParentItem() *CustomTableTreeItem {
 }
 
 // public java.lang.String getText()
-func (jbobject *CustomTableTreeItem) GetText2() string {
+func (jbobject *CustomTableTreeItem) GetText() string {
 	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getText", "java/lang/String")
 	if err != nil {
 		panic(err)
@@ -378,7 +378,7 @@ func (jbobject *CustomTableTreeItem) GetText2() string {
 }
 
 // public java.lang.String getText(int)
-func (jbobject *CustomTableTreeItem) GetText3(a int) string {
+func (jbobject *CustomTableTreeItem) GetText2(a int) string {
 	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getText", "java/lang/String", a)
 	if err != nil {
 		panic(err)
@@ -486,7 +486,7 @@ func (jbobject *CustomTableTreeItem) SetForeground(a GraphicsColorInterface)  {
 }
 
 // public void setImage(int, org.eclipse.swt.graphics.Image)
-func (jbobject *CustomTableTreeItem) SetImage3(a int, b GraphicsImageInterface)  {
+func (jbobject *CustomTableTreeItem) SetImage2(a int, b GraphicsImageInterface)  {
 	conv_b := javabind.NewGoToJavaCallable()
 	if err := conv_b.Convert(b); err != nil {
 		panic(err)
@@ -500,7 +500,7 @@ func (jbobject *CustomTableTreeItem) SetImage3(a int, b GraphicsImageInterface) 
 }
 
 // public void setImage(org.eclipse.swt.graphics.Image)
-func (jbobject *CustomTableTreeItem) SetImage2(a GraphicsImageInterface)  {
+func (jbobject *CustomTableTreeItem) SetImage(a GraphicsImageInterface)  {
 	conv_a := javabind.NewGoToJavaCallable()
 	if err := conv_a.Convert(a); err != nil {
 		panic(err)
@@ -514,7 +514,7 @@ func (jbobject *CustomTableTreeItem) SetImage2(a GraphicsImageInterface)  {
 }
 
 // public void setText(int, java.lang.String)
-func (jbobject *CustomTableTreeItem) SetText3(a int, b string)  {
+func (jbobject *CustomTableTreeItem) SetText2(a int, b string)  {
 	conv_b := javabind.NewGoToJavaString()
 	if err := conv_b.Convert(b); err != nil {
 		panic(err)
@@ -528,7 +528,7 @@ func (jbobject *CustomTableTreeItem) SetText3(a int, b string)  {
 }
 
 // public void setText(java.lang.String)
-func (jbobject *CustomTableTreeItem) SetText2(a string)  {
+func (jbobject *CustomTableTreeItem) SetText(a string)  {
 	conv_a := javabind.NewGoToJavaString()
 	if err := conv_a.Convert(a); err != nil {
 		panic(err)

@@ -98,6 +98,9 @@ type GraphicsGCInterface interface {
 	// public void fillRoundRectangle(int, int, int, int, int, int)
 	FillRoundRectangle(a int, b int, c int, d int, e int, f int) 
 
+	// public int getAdvanceWidth(char)
+	GetAdvanceWidth(a uint16) int
+
 	// public boolean getAdvanced()
 	GetAdvanced() bool
 
@@ -112,6 +115,9 @@ type GraphicsGCInterface interface {
 
 	// public org.eclipse.swt.graphics.Pattern getBackgroundPattern()
 	GetBackgroundPattern() *GraphicsPattern
+
+	// public int getCharWidth(char)
+	GetCharWidth(a uint16) int
 
 	// public org.eclipse.swt.graphics.Rectangle getClipping()
 	GetClipping() *GraphicsRectangle
@@ -676,6 +682,15 @@ func (jbobject *GraphicsGC) FillRoundRectangle(a int, b int, c int, d int, e int
 
 }
 
+// public int getAdvanceWidth(char)
+func (jbobject *GraphicsGC) GetAdvanceWidth(a uint16) int {
+	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getAdvanceWidth", javabind.Int, a)
+	if err != nil {
+		panic(err)
+	}
+	return jret.(int)
+}
+
 // public boolean getAdvanced()
 func (jbobject *GraphicsGC) GetAdvanced() bool {
 	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getAdvanced", javabind.Boolean)
@@ -737,6 +752,15 @@ func (jbobject *GraphicsGC) GetBackgroundPattern() *GraphicsPattern {
 	unique_x := &GraphicsPattern{}
 	unique_x.Callable = dst
 	return unique_x
+}
+
+// public int getCharWidth(char)
+func (jbobject *GraphicsGC) GetCharWidth(a uint16) int {
+	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getCharWidth", javabind.Int, a)
+	if err != nil {
+		panic(err)
+	}
+	return jret.(int)
 }
 
 // public org.eclipse.swt.graphics.Rectangle getClipping()

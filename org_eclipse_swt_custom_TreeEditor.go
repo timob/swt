@@ -18,10 +18,10 @@ type CustomTreeEditorInterface interface {
 	SetItem(a WidgetsTreeItemInterface) 
 
 	// public void setEditor(org.eclipse.swt.widgets.Control, org.eclipse.swt.widgets.TreeItem, int)
-	SetEditor4(a WidgetsControlInterface, b WidgetsTreeItemInterface, c int) 
+	SetEditor3(a WidgetsControlInterface, b WidgetsTreeItemInterface, c int) 
 
 	// public void setEditor(org.eclipse.swt.widgets.Control, org.eclipse.swt.widgets.TreeItem)
-	SetEditor3(a WidgetsControlInterface, b WidgetsTreeItemInterface) 
+	SetEditor2(a WidgetsControlInterface, b WidgetsTreeItemInterface) 
 }
 
 type CustomTreeEditor struct {
@@ -105,7 +105,7 @@ func (jbobject *CustomTreeEditor) SetItem(a WidgetsTreeItemInterface)  {
 }
 
 // public void setEditor(org.eclipse.swt.widgets.Control, org.eclipse.swt.widgets.TreeItem, int)
-func (jbobject *CustomTreeEditor) SetEditor4(a WidgetsControlInterface, b WidgetsTreeItemInterface, c int)  {
+func (jbobject *CustomTreeEditor) SetEditor3(a WidgetsControlInterface, b WidgetsTreeItemInterface, c int)  {
 	conv_a := javabind.NewGoToJavaCallable()
 	conv_b := javabind.NewGoToJavaCallable()
 	if err := conv_a.Convert(a); err != nil {
@@ -124,7 +124,7 @@ func (jbobject *CustomTreeEditor) SetEditor4(a WidgetsControlInterface, b Widget
 }
 
 // public void setEditor(org.eclipse.swt.widgets.Control)
-func (jbobject *CustomTreeEditor) SetEditor2(a WidgetsControlInterface)  {
+func (jbobject *CustomTreeEditor) SetEditor(a WidgetsControlInterface)  {
 	conv_a := javabind.NewGoToJavaCallable()
 	if err := conv_a.Convert(a); err != nil {
 		panic(err)
@@ -138,7 +138,7 @@ func (jbobject *CustomTreeEditor) SetEditor2(a WidgetsControlInterface)  {
 }
 
 // public void setEditor(org.eclipse.swt.widgets.Control, org.eclipse.swt.widgets.TreeItem)
-func (jbobject *CustomTreeEditor) SetEditor3(a WidgetsControlInterface, b WidgetsTreeItemInterface)  {
+func (jbobject *CustomTreeEditor) SetEditor2(a WidgetsControlInterface, b WidgetsTreeItemInterface)  {
 	conv_a := javabind.NewGoToJavaCallable()
 	conv_b := javabind.NewGoToJavaCallable()
 	if err := conv_a.Convert(a); err != nil {

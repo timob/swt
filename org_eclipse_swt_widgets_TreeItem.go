@@ -45,7 +45,7 @@ type WidgetsTreeItemInterface interface {
 	GetGrayed() bool
 
 	// public org.eclipse.swt.graphics.Image getImage(int)
-	GetImage3(a int) *GraphicsImage
+	GetImage2(a int) *GraphicsImage
 
 	// public org.eclipse.swt.graphics.Rectangle getImageBounds(int)
 	GetImageBounds(a int) *GraphicsRectangle
@@ -66,7 +66,7 @@ type WidgetsTreeItemInterface interface {
 	GetParentItem() *WidgetsTreeItem
 
 	// public java.lang.String getText(int)
-	GetText3(a int) string
+	GetText2(a int) string
 
 	// public org.eclipse.swt.graphics.Rectangle getTextBounds(int)
 	GetTextBounds(a int) *GraphicsRectangle
@@ -382,7 +382,7 @@ func (jbobject *WidgetsTreeItem) GetGrayed() bool {
 }
 
 // public org.eclipse.swt.graphics.Image getImage()
-func (jbobject *WidgetsTreeItem) GetImage2() *GraphicsImage {
+func (jbobject *WidgetsTreeItem) GetImage() *GraphicsImage {
 	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getImage", "org/eclipse/swt/graphics/Image")
 	if err != nil {
 		panic(err)
@@ -400,7 +400,7 @@ func (jbobject *WidgetsTreeItem) GetImage2() *GraphicsImage {
 }
 
 // public org.eclipse.swt.graphics.Image getImage(int)
-func (jbobject *WidgetsTreeItem) GetImage3(a int) *GraphicsImage {
+func (jbobject *WidgetsTreeItem) GetImage2(a int) *GraphicsImage {
 	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getImage", "org/eclipse/swt/graphics/Image", a)
 	if err != nil {
 		panic(err)
@@ -515,7 +515,7 @@ func (jbobject *WidgetsTreeItem) GetParentItem() *WidgetsTreeItem {
 }
 
 // public java.lang.String getText()
-func (jbobject *WidgetsTreeItem) GetText2() string {
+func (jbobject *WidgetsTreeItem) GetText() string {
 	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getText", "java/lang/String")
 	if err != nil {
 		panic(err)
@@ -531,7 +531,7 @@ func (jbobject *WidgetsTreeItem) GetText2() string {
 }
 
 // public java.lang.String getText(int)
-func (jbobject *WidgetsTreeItem) GetText3(a int) string {
+func (jbobject *WidgetsTreeItem) GetText2(a int) string {
 	jret, err := jbobject.CallMethod(javabind.GetEnv(), "getText", "java/lang/String", a)
 	if err != nil {
 		panic(err)
