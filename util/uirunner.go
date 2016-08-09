@@ -37,25 +37,14 @@ func (u *UIRunner) ExecUiFuncs() {
 	if u.check == nil {
 		u.check = javabind.NewCheckEnv()
 	}
-	select {
-	case f := <-u.uiFuncChan:
-		f()
-		u.uiDone <- 1
-	case f := <-u.cbFuncChan:
-		f()
-	A:
-		for {
-			select {
-			case f := <-u.cbFuncChan:
-				f()
-			default:
-				break A
-			}
+	for {
+		select {
+		case f := <-u.uiFuncChan:
+			f()
+			u.uiDone <- 1
+		default:
+			goto finish
 		}
-	default:
 	}
-}
-
-func (u *UIRunner) CallBackRun(f func()) {
-	u.cbFuncChan <- f
+	finish:
 }
